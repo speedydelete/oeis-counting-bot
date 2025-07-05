@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "lib": ["ESNext"],
+        "module": "NodeNext",
+        "strict": true
+    },
+    "files": ["index.ts"]
+}

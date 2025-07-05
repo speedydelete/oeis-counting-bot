@@ -1,0 +1,19 @@
+{
+  "name": "oeis",
+  "version": "1.0.0",
+  "description": "",
+  "author": "speedydelete",
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/parser": "^7.27.5",
+    "@babel/types": "^7.27.6",
+    "@types/node": "^24.0.3",
+    "discord.js": "^14.20.0",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}
