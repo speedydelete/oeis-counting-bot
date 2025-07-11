@@ -467,17 +467,23 @@ client.on('messageCreate', async message => {
         return;
     }
     currentCount.push(value);
-    if (previousSeq && previousSeq.elements[currentCount.length - 1] === value) {
-        await success(message);
-        return;
+    let previousRanOut = false;
+    if (previousSeq) {
+        let elt = previousSeq.elements[currentCount.length - 1];
+        if (elt === undefined) {
+            previousRanOut = true;
+        } else if (elt === value) {
+            await success(message);
+            return;
+        }
     }
     let {seq, ranOut} = findSequence(currentCount);
     if (!seq) {
         currentCount = [];
         if (!previousSeq) {
             await fail(message, 'No sequence starts with that number!');
-        } else if (ranOut) {
-            await fail(message, 'The sequence ran out of example terms', false);
+        } else if (ranOut || previousRanOut) {
+            await fail(message, 'The sequence ran out of example terms!');
         } else {
             await fail(message, `You broke the chain! We were following ${previousSeq.id} (${previousSeq.name})`);
         }
