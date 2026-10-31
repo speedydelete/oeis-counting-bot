@@ -485,7 +485,7 @@ client.on('messageCreate', async message => {
         } else if (ranOut || previousRanOut) {
             await fail(message, 'The sequence ran out of example terms!');
         } else {
-            await fail(message, `You broke the chain! We were following ${previousSeq.id} (${previousSeq.name})`);
+            await fail(message, `You broke the chain! We were following [${previousSeq.id}](https://oeis.org/${previousSeq.id}) (${previousSeq.name})`);
         }
     } else {
         previousSeq = seq;
